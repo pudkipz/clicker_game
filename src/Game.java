@@ -4,8 +4,8 @@ public class Game {
     private static int points = 0;
     private static int idleMultiplier = 1;
     private static int clickMultiplier = 2;
-    private static int idleMultiplierCost = 10;
-    private static int getClickMultiplierCost = 10;
+    private static int idleMultCost = 10;
+    private static int clickMultCost = 10;
 
     private static boolean clickPoints = false;
 
@@ -13,7 +13,7 @@ public class Game {
     private static long previousTime = System.nanoTime();
 
     private MainPane mainPane = new MainPane(points, idleMultiplier, clickMultiplier);
-    private ShopPane shopPane = new ShopPane();
+    private ShopPane shopPane = new ShopPane(clickMultCost, idleMultCost, points);
 
     private GridPane currentPane = mainPane;
 
@@ -25,12 +25,34 @@ public class Game {
         currentPane = shopPane;
     }
 
+    public void pressedPane2Btn_buyClickMult() {
+        if (points >= clickMultCost) {
+            clickMultiplier *= 2;
+            points -= clickMultCost;
+            clickMultCost *= 1.6;
+        }
+    }
+
+    public void pressedPane2Btn_buyIdleMult() {
+        if (points >= idleMultCost) {
+            idleMultiplier += 2;
+            points -= idleMultCost;
+            idleMultCost *= 1.2;
+        }
+    }
+
     public void pressedPane2Btn() {
+        clickMultiplier = clickMultiplier*2;
         currentPane = mainPane;
     }
 
     private void updatePane1() {
         mainPane.setPointsLabel(points, idleMultiplier, clickMultiplier);
+    }
+
+    private void updatePane2() {
+        shopPane.setPointsLabel(points);
+        shopPane.setButtonTexts(clickMultCost, idleMultCost);
     }
 
     public void update() {
@@ -47,6 +69,7 @@ public class Game {
         }
 
         updatePane1();
+        updatePane2();
     }
 
     public GridPane getCurrentPane() {
