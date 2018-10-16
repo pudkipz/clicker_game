@@ -13,7 +13,7 @@ public class MainPane extends GridPane {
     Label lbl_idleMult;
     Label lbl_clickMult;
 
-    MainPane(int points, int idleMultiplier, int clickMultiplier) {
+    MainPane(long points, long idleMultiplier, long clickMultiplier) {
         btn_hi = new Button();
         btn_hi.setText("Say 'Hi!'");
         btn_hi.setId("PANE1_BTN_HI");
@@ -22,7 +22,7 @@ public class MainPane extends GridPane {
 
             @Override
             public void handle(ActionEvent event) {
-                Game_GUI.handleAction(event);
+                GameGUI.handleAction(event);
             }
         });
 
@@ -34,7 +34,7 @@ public class MainPane extends GridPane {
 
             @Override
             public void handle(ActionEvent event) {
-                Game_GUI.handleAction(event);
+                GameGUI.handleAction(event);
             }
         });
 
@@ -48,15 +48,15 @@ public class MainPane extends GridPane {
         this.setVgap(10);
         this.setHgap(10);
         this.setPadding(new Insets(25, 25, 25, 25));
-        this.add(btn_hi, 1, 0);
-        this.add(btn_switch, 1, 1);
+        this.add(btn_hi, 1, 1);
+        this.add(btn_switch, 1, 2);
         this.add(lbl_pts, 0, 0);
         this.add(lbl_idleMult, 0, 1);
         this.add(lbl_clickMult, 0, 2);
 
     }
 
-    public void setPointsLabel(int points, int idleMult, int clickMult) {
+    public void setPointsLabel(long points, long idleMult, long clickMult) {
         lbl_pts.setText("Points: " + String.valueOf(points));
         lbl_idleMult.setText("Idle multiplier: " + String.valueOf(idleMult));
         lbl_clickMult.setText("Click multiplier: " + String.valueOf(clickMult));

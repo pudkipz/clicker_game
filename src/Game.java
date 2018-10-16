@@ -1,11 +1,11 @@
 import javafx.scene.layout.GridPane;
 
 public class Game {
-    private static int points = 0;
-    private static int idleMultiplier = 1;
-    private static int clickMultiplier = 2;
-    private static int idleMultCost = 10;
-    private static int clickMultCost = 10;
+    private static long points = 0;
+    private static long idleMultiplier = 1;
+    private static long clickMultiplier = 2;
+    private static long idleMultCost = 10;
+    private static long clickMultCost = 10;
 
     private static boolean clickPoints = false;
 
@@ -29,15 +29,15 @@ public class Game {
         if (points >= clickMultCost) {
             clickMultiplier *= 2;
             points -= clickMultCost;
-            clickMultCost *= 1.6;
+            clickMultCost = (25 * clickMultCost * clickMultCost) / 100;
         }
     }
 
     public void pressedPane2Btn_buyIdleMult() {
         if (points >= idleMultCost) {
-            idleMultiplier += 2;
+            idleMultiplier += 3;
             points -= idleMultCost;
-            idleMultCost *= 1.2;
+            idleMultCost = (11 * idleMultCost * idleMultCost) / 100;
         }
     }
 
@@ -76,7 +76,7 @@ public class Game {
         return currentPane;
     }
 
-    public int getPoints() {
+    public long getPoints() {
         return this.points;
     }
 
@@ -88,11 +88,11 @@ public class Game {
         Game.clickMultiplier = clickMultiplier;
     }
 
-    public static int getIdleMultiplier() {
+    public static long getIdleMultiplier() {
         return idleMultiplier;
     }
 
-    public static int getClickMultiplier() {
+    public static long getClickMultiplier() {
         return clickMultiplier;
     }
 }

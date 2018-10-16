@@ -9,12 +9,10 @@ import javafx.scene.layout.GridPane;
 public class ShopPane extends GridPane {
     Button btn;
     Label lbl_pts;
-
-    // TODO: Implement btn_buyIdleMult and btn_buyClickMult.
     Button btn_buyIdleMult;
     Button btn_buyClickMult;
 
-    ShopPane(int clickMultCost, int idleMultCost, int points) {
+    ShopPane(long clickMultCost, long idleMultCost, long points) {
         btn = new Button();
         btn.setText("heyooooooooooooooooo");
         btn.setId("PANE2_BTN");
@@ -23,7 +21,7 @@ public class ShopPane extends GridPane {
 
             @Override
             public void handle(ActionEvent event) {
-                Game_GUI.handleAction(event);
+                GameGUI.handleAction(event);
             }
         });
 
@@ -34,7 +32,7 @@ public class ShopPane extends GridPane {
 
             @Override
             public void handle(ActionEvent event) {
-                Game_GUI.handleAction(event);
+                GameGUI.handleAction(event);
             }
         });
 
@@ -45,7 +43,7 @@ public class ShopPane extends GridPane {
 
             @Override
             public void handle(ActionEvent event) {
-                Game_GUI.handleAction(event);
+                GameGUI.handleAction(event);
             }
         });
 
@@ -56,17 +54,17 @@ public class ShopPane extends GridPane {
         setHgap(10);
         setPadding(new Insets(25, 25, 25, 25));
         add(lbl_pts, 0, 0);
-        add(btn, 1, 0);
-        add(btn_buyClickMult, 1, 1);
-        add(btn_buyIdleMult, 1, 2);
+        add(btn, 0, 1);
+        add(btn_buyClickMult, 0, 2);
+        add(btn_buyIdleMult, 0, 3);
 
     }
 
-    public void setPointsLabel(int points) {
+    public void setPointsLabel(long points) {
         lbl_pts.setText("Points: " + String.valueOf(points));
     }
 
-    public void setButtonTexts(int cMult, int iMult) {
+    public void setButtonTexts(long cMult, long iMult) {
         btn_buyClickMult.setText("Increase click multiplier (" + cMult + ")");
         btn_buyIdleMult.setText("Increase idle multiplier (" + iMult + ")");
     }
