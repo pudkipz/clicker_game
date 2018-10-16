@@ -2,16 +2,24 @@
 
 /*
 
-    What is a MenuItem?
+    Done. What is a MenuItem?
     What is a Button?
     How do forms work?
-    Different panels? Yay!
+    Done. Different panels?
+    Difference between types of panes?
 
-    Index:
+    Guide index:
     https://docs.oracle.com/javase/8/javase-clienttechnologies.htm
 
     Creating forms:
     https://docs.oracle.com/javase/8/javafx/get-started-tutorial/form.htm
+
+    Layouts:
+    https://docs.oracle.com/javase/8/javafx/layout-tutorial/index.html
+
+    Event handlers:
+    https://docs.oracle.com/javase/8/javafx/events-tutorial/events.htm#JFXED117
+    https://docs.oracle.com/javase/8/javafx/events-tutorial/handlers.htm#BABBHHCJ
 
     Creating a JavaFX app:
     https://docs.oracle.com/javase/8/javafx/get-started-tutorial/hello_world.htm
@@ -54,6 +62,13 @@ public class Game_GUI extends Application {
                 break;
             case "PANE2_BTN":
                 Game.pressedPane2Btn();
+                break;
+            case "PANE2_btn_buyClickMult":
+                Game.pressedPane2Btn_buyClickMult();
+                break;
+            case "PANE2_btn_buyIdleMult":
+                Game.pressedPane2Btn_buyIdleMult();
+                break;
             default:
                 break;
         }
