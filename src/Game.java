@@ -1,4 +1,5 @@
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.AudioClip;
 
 public class Game {
     private static long points = 0;
@@ -17,7 +18,12 @@ public class Game {
 
     private GridPane currentPane = mainPane;
 
+    private final AudioClip click = new AudioClip("file:assets/click.wav");
+    private final AudioClip error = new AudioClip("file:assets/error.wav");
+    private final AudioClip upgrade = new AudioClip("file:assets/upgrade.wav");
+
     public void pressedPane1BtnHi() {
+        click.play();
         clickPoints = true;
     }
 
@@ -27,17 +33,23 @@ public class Game {
 
     public void pressedPane2Btn_buyClickMult() {
         if (points >= clickMultCost) {
+            upgrade.play();
             clickMultiplier *= 2;
             points -= clickMultCost;
             clickMultCost = (25 * clickMultCost * clickMultCost) / 100;
+        } else {
+            error.play();
         }
     }
 
     public void pressedPane2Btn_buyIdleMult() {
         if (points >= idleMultCost) {
+            upgrade.play();
             idleMultiplier += 3;
             points -= idleMultCost;
             idleMultCost = (11 * idleMultCost * idleMultCost) / 100;
+        } else {
+            error.play();
         }
     }
 
