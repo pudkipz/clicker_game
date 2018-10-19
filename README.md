@@ -1,3 +1,3 @@
 # clicker_game
 
-For no reason at all, I am creating this very crappy minimalistic clicker clone. It is still in the early days of production, however.
+For no reason at all, I have created this very crappy minimalistic clicker clone.
